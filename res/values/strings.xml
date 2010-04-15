@@ -9,4 +9,5 @@
 			<item>French</item>
 		</string-array>
 		<string name="text_to_translate">The text you wish to translate</string>
+		<string name="translate_button">Translate!</string>
 </resources>

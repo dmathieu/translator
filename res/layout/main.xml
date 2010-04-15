@@ -18,10 +18,17 @@
         android:prompt="@string/to_languages_prompt" />
 				
 			<EditText
-        android:id="@+id/test"
+        android:id="@+id/text_to_translate"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="@android:drawable/editbox_background"
 				android:prompt="@string/text_to_translate" />
+				
+			<Button
+        android:id="@+id/translate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="@string/translate_button" />
 </LinearLayout>
 

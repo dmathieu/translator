@@ -21,9 +21,8 @@ public class Translator extends Activity {
         setContentView(R.layout.main);
         
         
-        ArrayAdapter<CharSequence> adapter = Translator.getSpinnerAdapter(this);
-        ((Spinner) findViewById(R.id.languages_from)).setAdapter(adapter);
-        ((Spinner) findViewById(R.id.languages_to)).setAdapter(adapter);
+        ((Spinner) findViewById(R.id.languages_from)).setAdapter(Translator.getSpinnerAdapter(this, true));
+        ((Spinner) findViewById(R.id.languages_to)).setAdapter(Translator.getSpinnerAdapter(this, false));
 		
 		findViewById(R.id.translate_button).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -34,10 +33,10 @@ public class Translator extends Activity {
 		});
     }
     
-    public static ArrayAdapter getSpinnerAdapter(Activity context) {
+    public static ArrayAdapter getSpinnerAdapter(Activity context, Boolean has_guess) {
     	ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item);
     	adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    	Translator.fillSpinner(adapter);
+    	Translator.fillSpinner(adapter, has_guess);
         return adapter;
     }
 	
@@ -51,10 +50,15 @@ public class Translator extends Activity {
 		}
 	}
 	
-	public static void fillSpinner(ArrayAdapter adapter) {
+	public static void fillSpinner(ArrayAdapter adapter, Boolean has_guess) {
 		adapter.clear();
+		
+		Integer i = 0;
 		for (Language l : Language.values()) {
-			adapter.add(l.toString());
+			if (i > 0 || has_guess == true) {
+				adapter.add(l.toString());
+			}			
+			i += 1;
 		}
 	}
 }

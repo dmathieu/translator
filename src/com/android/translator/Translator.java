@@ -24,21 +24,14 @@ public class Translator extends Activity {
                 this, R.array.languages_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         
-        Spinner languages_from = (Spinner) findViewById(R.id.languages_from);
-        languages_from.setAdapter(adapter);
-        
-        Spinner languages_to = (Spinner) findViewById(R.id.languages_to);
-        languages_to.setAdapter(adapter);
+        ((Spinner) findViewById(R.id.languages_from)).setAdapter(adapter);
+        ((Spinner) findViewById(R.id.languages_to)).setAdapter(adapter);
 		
-		Button translate = (Button) findViewById(R.id.translate_button);
-		translate.setOnClickListener(new View.OnClickListener() {
+		findViewById(R.id.translate_button).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
-				EditText edit_text = (EditText) findViewById(R.id.text_to_translate);
-				String text = edit_text.getText().toString();
-				
+				String text = ((EditText) findViewById(R.id.text_to_translate)).getText().toString();
 				String translatedText = Translator.translate(text);
-				TextView translated_text = (TextView) findViewById(R.id.translated_text);
-				translated_text.setText(translatedText);
+				((TextView) findViewById(R.id.translated_text)).setText(translatedText);
 			}
 		});
     }

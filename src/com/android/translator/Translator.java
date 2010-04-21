@@ -35,9 +35,9 @@ public class Translator extends Activity {
     }
     
     public static ArrayAdapter getSpinnerAdapter(Activity context) {
-    	ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                context, R.array.languages_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    	ArrayAdapter adapter = new ArrayAdapter(context, android.R.layout.simple_spinner_item);
+    	adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    	Translator.fillSpinner(adapter);
         return adapter;
     }
 	
@@ -48,6 +48,13 @@ public class Translator extends Activity {
 			return translatedText;
 		} catch(Exception e) {
 			return "An error occured. Can't translate.";
+		}
+	}
+	
+	public static void fillSpinner(ArrayAdapter adapter) {
+		adapter.clear();
+		for (Language l : Language.values()) {
+			adapter.add(l.toString());
 		}
 	}
 }

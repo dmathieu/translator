@@ -4,10 +4,6 @@
 		
 		<string name="from_languages_prompt">Choose a language to translate from</string>
 		<string name="to_languages_prompt">Choose a language to translate to</string>
-		<string-array name="languages_array">
-			<item>English</item>
-			<item>French</item>
-		</string-array>
 		<string name="text_to_translate">The text you wish to translate</string>
 		<string name="translate_button">Translate!</string>
 </resources>

@@ -20,10 +20,8 @@ public class Translator extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.languages_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         
+        ArrayAdapter<CharSequence> adapter = Translator.getSpinnerAdapter(this);
         ((Spinner) findViewById(R.id.languages_from)).setAdapter(adapter);
         ((Spinner) findViewById(R.id.languages_to)).setAdapter(adapter);
 		
@@ -34,6 +32,13 @@ public class Translator extends Activity {
 				((TextView) findViewById(R.id.translated_text)).setText(translatedText);
 			}
 		});
+    }
+    
+    public static ArrayAdapter getSpinnerAdapter(Activity context) {
+    	ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                context, R.array.languages_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return adapter;
     }
 	
 	public static String translate(String text) {

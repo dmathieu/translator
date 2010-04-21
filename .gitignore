@@ -2,4 +2,3 @@ bin/*
 gen/*
 local.properties
 .DS_Store
-libs/*

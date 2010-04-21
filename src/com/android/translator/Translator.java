@@ -27,7 +27,19 @@ public class Translator extends Activity {
 		findViewById(R.id.translate_button).setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				String text = ((EditText) findViewById(R.id.text_to_translate)).getText().toString();
-				String translatedText = Translator.translate(text);
+				
+				String lang_from = ((Spinner) findViewById(R.id.languages_from)).getSelectedItem().toString();
+				if (Language.fromString(lang_from) == null) {
+					((TextView) findViewById(R.id.translated_text)).setText("Invalid language : " + lang_from);
+					return;
+				}
+				String lang_to = ((Spinner) findViewById(R.id.languages_to)).getSelectedItem().toString();
+				if (Language.fromString(lang_from) == null) {
+					((TextView) findViewById(R.id.translated_text)).setText("Invalid language : " + lang_to);
+					return;
+				}
+				
+				String translatedText = Translator.translate(text, Language.fromString(lang_from), Language.fromString(lang_to));
 				((TextView) findViewById(R.id.translated_text)).setText(translatedText);
 			}
 		});
@@ -40,13 +52,13 @@ public class Translator extends Activity {
         return adapter;
     }
 	
-	public static String translate(String text) {
+	public static String translate(String text, Language lang_from, Language lang_to) {
 		try {
 			Translate.setHttpReferrer("http//www.dmathieu.com");
-			String translatedText = Translate.execute(text, Language.ENGLISH, Language.FRENCH);
+			String translatedText = Translate.execute(text, lang_from, lang_to);
 			return translatedText;
 		} catch(Exception e) {
-			return "An error occured. Can't translate.";
+			return "An error occured. Can't translate : " + e.toString();
 		}
 	}
 	

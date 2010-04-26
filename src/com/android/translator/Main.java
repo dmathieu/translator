@@ -14,7 +14,7 @@ import com.google.api.translate.Language;
 import com.google.api.translate.Translate;
 
 
-public class Translator extends Activity {
+public class Main extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

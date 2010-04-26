@@ -68,7 +68,7 @@ public class Translator extends Activity {
 		Integer i = 0;
 		for (Language l : Language.values()) {
 			if (i > 0 || has_guess == true) {
-				adapter.add(l.toString());
+				adapter.add(l.name());
 			}			
 			i += 1;
 		}

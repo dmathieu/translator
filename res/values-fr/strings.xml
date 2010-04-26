@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Translator</string>
+    
+    <string name="from_languages_prompt">Langue d\'origine</string>
+    <string name="to_languages_prompt">Langue de destination</string>
+    <string name="text_to_translate">Texte à traduire</string>
+    <string name="translate_button">Traduire!</string>
+</resources>
